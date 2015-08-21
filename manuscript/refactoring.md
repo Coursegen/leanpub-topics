@@ -1,0 +1,1 @@
+* Look at this article: [Refactoring Techiniques](http://www.integralist.co.uk/posts/refactoring-techniques.html)

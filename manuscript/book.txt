@@ -1,0 +1,4 @@
+four_rules_of_simple_design.md
+data_modeling.md
+database_migration.md
+duck_typing.md
