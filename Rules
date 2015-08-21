@@ -6,28 +6,12 @@ preprocess do
   Toc.instance.prepare @items, SECTION_CONFIG
 end
 
-compile '/bootstrap/**/*' do
-  nil
-end
-
-compile '/content/scripts/**/*' do
-  nil
-end
-
-compile '/chalkmark/**/*' do
-  nil
-end
-
-compile '/tipuesearch/**/*' do
-  nil
-end
-
-compile "/tipuesearch_logic/tipuesearch_content.*" do
+compile '/**/*.md.erb' do
   filter :erb
 end
 
-compile "/content/**/*.ical.erb" do
-  filter :erb
+route '/**/*.md.erb' do
+  item.identifier.to_s.sub(/\.erb/, '')
 end
 
 compile '/**/*' do
@@ -52,38 +36,6 @@ compile '/**/*' do
     end
     layout '/course.*'
   end
-end
-
-route '/bootstrap/**/*' do
-  @item.identifier.to_s
-end
-
-route '/tipuesearch/**/*' do
-  @item.identifier.to_s
-end
-
-route "/tipuesearch_logic/tipuesearch_content.*" do
-  '/tipuesearch/tipuesearch_content.js'
-end
-
-
-route '/chalkmark/**/*' do
-  @item.identifier.to_s
-end
-
-# Output the search page
-route '/tipuesearch_logic/search.md.erb' do
-  '/tipuesearch_logic/search/index.html'
-end
-
-route '/**/*.ical.erb' do
-  @item.identifier.without_ext
-end
-
-
-# Select which .md.erb becomes the home page of the site
-route '/content/index.md.erb' do
-  '/index.html'
 end
 
 route '/**/*' do
